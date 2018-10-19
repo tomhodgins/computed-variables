@@ -1,0 +1,30 @@
+{
+  "name": "computed-variables",
+  "version": "0.0.1",
+  "description": "Event-driven custom CSS variables",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomhodgins/computed-variables.git"
+  },
+  "keywords": [
+    "css",
+    "custom",
+    "variable",
+    "properties",
+    "property",
+    "function",
+    "plugin",
+    "mixin",
+    "extension"
+  ],
+  "author": "Tommy Hodgins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomhodgins/computed-variables/issues"
+  },
+  "homepage": "https://github.com/tomhodgins/computed-variables#readme"
+}
