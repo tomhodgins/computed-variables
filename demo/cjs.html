@@ -4,13 +4,15 @@
 <title>Computed Variables Demo</title>
 
 <style>
+  :root {
+    --innerWidth: 'innerWidth';
+    --innerHeight: 'innerHeight';
+    --cursorX: 'clientX';
+    --cursorY: 'clientY';
+  }
   html {
     cursor: none;
     background: #222;
-    --innerWidth: 0;
-    --innerHeight: 0;
-    --cursorX: calc(var(--innerWidth) / 2);
-    --cursorY: calc(var(--innerHeight) / 2);
   }
   div {
     width: 50px;

@@ -4,13 +4,15 @@
 <title>Computed Variables Demo</title>
 
 <style>
+  :root {
+    --innerWidth: 'innerWidth';
+    --innerHeight: 'innerHeight';
+    --cursorX: 'clientX';
+    --cursorY: 'clientY';
+  }
   html {
     cursor: none;
     background: #222;
-    --innerWidth: 0;
-    --innerHeight: 0;
-    --cursorX: calc(var(--innerWidth) / 2);
-    --cursorY: calc(var(--innerHeight) / 2);
   }
   div {
     width: 50px;
@@ -24,39 +26,23 @@
   }
 </style>
 
-<div></div>
+<div style="--innerWidth: 'innerWidth'"></div>
 
 <script type=module>
   import computedVariables from '../index.es.js'
 
-  // set innerWidth
+  // innerWidth and innerHeight
   computedVariables(
-    '--innerWidth',
-    () => window.innerWidth,
+    '--inner',
+    v => window[v],
     window,
-    ['load']
+    ['load', 'resize']
   )
 
-  // set innerHeight
+  // cursor X and Y coordinates
   computedVariables(
-    '--innerHeight',
-    () => window.innerHeight,
-    window,
-    ['load']
-  )
-
-  // set cursor X position
-  computedVariables(
-    '--cursorX',
-    (v, e) => e.clientX || e.touches[0].clientX,
-    window,
-    ['mousemove', 'touchmove']
-  )
-
-  // set cursorY position
-  computedVariables(
-    '--cursorY', 
-    (v, e) => e.clientY || e.touches[0].clientY,
+    '--cursor',
+    (v, e) => e[v] || e.touches[0][v],
     window,
     ['mousemove', 'touchmove']
   )

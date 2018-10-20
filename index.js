@@ -1,8 +1,8 @@
 module.exports = function(
   name = '',
-  func = ()=>'',
+  func = () => '',
   selector = window,
-  events = ['load', 'resize', 'input', 'click']
+  events = ['load', 'resize', 'input', 'click', 'recompute']
 ) {
 
   const readStylesheet = stylesheet =>
@@ -57,7 +57,8 @@ module.exports = function(
             prop,
             func(
               attemptJSON(rule.style.getPropertyValue(`${prop}-value`)),
-              e
+              e,
+              rule
             )
           )
         })
@@ -69,11 +70,18 @@ module.exports = function(
       e => processRule(rules, e)
     )
 
-  const rules = flattenArray(
-    Array.from(document.styleSheets).map(
-      stylesheet => readStylesheet(stylesheet)
+  const rules = [
+    ...flattenArray(
+      Array.from(document.styleSheets).map(
+        stylesheet => readStylesheet(stylesheet)
+      )
+    ),
+    ...flattenArray(
+      Array.from(document.querySelectorAll('*')).map(
+        tag => readRule(tag)
+      )
     )
-  )
+  ]
 
   if (selector === window) {
 
