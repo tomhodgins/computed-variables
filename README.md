@@ -77,7 +77,7 @@ This example shows and example of exposing properties from the `window` object, 
 
 ```html
 <script type=module>
-  import computedVarcViables from 'https://unpkg.com/computed-variables/index.es.js';
+  import computedVariables from 'https://unpkg.com/computed-variables/index.es.js';
 
   computedVariables(
     '--inner',
