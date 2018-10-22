@@ -3,7 +3,7 @@ const computedVariables = require('../index.js')
 // innerWidth and innerHeight
 computedVariables(
   '--inner',
-  v => window[v],
+  value => window[value],
   window,
   ['load', 'resize']
 )
@@ -11,7 +11,7 @@ computedVariables(
 // cursor X and Y coordinates
 computedVariables(
   '--cursor',
-  (v, e) => e[v] || e.touches[0][v],
+  (value, event) => event[value] || event.touches[0][value],
   window,
   ['mousemove', 'touchmove']
 )
