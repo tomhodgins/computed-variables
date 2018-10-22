@@ -130,7 +130,7 @@ computedVariables(
 
 With this recipe we can watch the mouse or first touch point cursor coordinates, and use them in CSS with `var(--cursorX)` and `var(--cursorY)`. This will update every `mousemove` and `touchmove` event, allowing you to use the mouse cursor position in your CSS styles.
 
-## Exposing element dimensions and offset
+### Exposing element dimensions and offset
 
 ```html
 <div style='
