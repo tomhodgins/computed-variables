@@ -8,7 +8,7 @@ Computed Variables is a JavaScript plugin that allows CSS variables to subscribe
 
 Have you ever wished you could access values from your CSS stylesheets that JavaScript is aware of, but CSS can't quite reach? By using computed variables you can expose things like the window dimensions or scroll positions, properties of elements, any math JavaScript can compute, cursor and pointer events, custom easing functions, and more.
 
-Similar in concept to [jsincss](https://github.com/tomhodgins/jsincss), except jsincss is for rules and stylesheets, and computed variables is for CSS variables.
+> Similar in concept to [jsincss](https://github.com/tomhodgins/jsincss), except jsincss is for rules and stylesheets, and computed variables is for CSS variables.
 
 ## Downloading
 
