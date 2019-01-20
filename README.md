@@ -174,7 +174,7 @@ computedVariables(
 )
 ```
 
-This recipe let's CSS authors create varaibles like `--scroll-top` or `--scroll-left` which can be used to expose `document.scrollingElement.scrollTop` or `document.scrollingElement.scrollLeft` (or other things) to CSS, updated whenever the window loads or scrolls.
+This recipe let's CSS authors create variables like `--scroll-top` or `--scroll-left` which can be used to expose `document.scrollingElement.scrollTop` or `document.scrollingElement.scrollLeft` (or other things) to CSS, updated whenever the window loads or scrolls.
 
 ### Exposing element scroll position
 
