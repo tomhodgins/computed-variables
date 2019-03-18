@@ -243,3 +243,41 @@ This recipe would take an array expressed in CSS and return a random choice from
 You can see an example of the last two recipes in the following demo:
 
 - [Computed Variables Plugin](https://codepen.io/tomhodgins/pen/JmvNoQ)
+
+
+### Options
+
+Options are passed as an optional object at the end of the computedVariables function.
+
+```
+  // Resizes the input automatically based on content
+  computedVariables
+  (
+      '--expand',
+      (value, event, tag) => 
+      {
+          tag.style.height = 'inherit'
+          const height = tag.scrollHeight
+          tag.style.height = ''
+          return height + 'px'
+      },
+      "textarea",
+      ['input', 'paste', 'blur', 'reprocess'],
+      {
+          beforeChange: function()
+          {
+              // Do some stuff
+          },
+          afterChange: function()
+          {
+              // Do some stuff
+          }
+      }
+  )
+  ```
+
+>beforeChange
+A function that executes before a CSS change is applied
+
+>afterChange
+A function that executes after a CSS change is applied

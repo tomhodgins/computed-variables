@@ -2,7 +2,8 @@ export default function(
   name = '',
   func = () => '',
   selector = window,
-  events = ['load', 'resize', 'input', 'click', 'recompute']
+  events = ['load', 'resize', 'input', 'click', 'recompute'],
+  options = {}
 ) {
 
   // Reads individual CSS rules from a CSS rule list
@@ -79,24 +80,48 @@ export default function(
         // Find custom properties matching our name
         .filter(prop => prop.startsWith(name) && prop.endsWith('-value') === false)
         .forEach(prop => {
-          rule.style.setProperty(
 
+          // Get the output of the supplied function
+          let newValue = func(
+            
+            // Given the initial value parsed as JSON
+            attemptJSON(rule.style.getPropertyValue(`${prop}-value`)),
+            
+            // The event object for the event recomputing the variable
+            e,
+            
+            // and a reference to the original CSS rule or DOM node
+            rule
+          )
+
+          // If a function for beforeChange was provided, run it now
+          // This runs before the CSS changes are applied
+          // If false is returned, the operation is skipped
+          if(options.beforeChange)
+          {
+              let response = options.beforeChange(newValue)
+
+              if(response === false)
+              {
+                return
+              }
+          }
+ 
+          rule.style.setProperty(
+              
             // Set the CSS variable
             prop,
-
+              
             // To the output of the supplied function
-            func(
-
-              // Given the initial value parsed as JSON
-              attemptJSON(rule.style.getPropertyValue(`${prop}-value`)),
-
-              // The event object for the event recomputing the variable
-              e,
-
-              // and a reference to the original CSS rule or DOM node
-              rule
-            )
+            newValue
           )
+
+          // If a function for afterChange was provided, run it now
+          // This runs after the CSS changes are applied
+          if(options.afterChange)
+          {
+              options.afterChange(newValue)
+          }
         })
     )
 
